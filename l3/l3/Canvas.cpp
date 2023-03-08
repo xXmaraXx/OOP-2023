@@ -11,7 +11,7 @@ Canvas::Canvas(int lines, int columns)
 }
 
 Canvas::~Canvas() {
-    delete (matrix);
+    delete[] matrix;
 }
 
 void Canvas::set_pixel(int x, int y, char value) {
