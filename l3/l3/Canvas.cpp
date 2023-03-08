@@ -11,6 +11,9 @@ Canvas::Canvas(int lines, int columns)
 }
 
 Canvas::~Canvas() {
+    for (int i = 0; i < lines; i++) {
+        delete[] matrix[i];
+    }
     delete[] matrix;
 }
 
