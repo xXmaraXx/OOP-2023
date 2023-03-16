@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
     // modifica clasa ca sa mearga asta
     l.print_books();
 
-    MyLibrary l6{ std::cout, 5, 10, 15 };
+    MyLibrary l6{ 0, 5, 10, 15 };
     l6.print_books();
 
     {
