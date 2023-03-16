@@ -67,7 +67,12 @@ MyLibrary::MyLibrary(std::ostream& output_stream, unsigned books_count, ...) : o
     va_end(args);
 }
 
-MyLibrary::MyLibrary(std::initializer_list<int> v) : MyLibrary(std::cout, v.size(), v.begin()) {
+MyLibrary::MyLibrary(std::initializer_list<int> v) : output_stream(std::cout) {
+    this->books_count = (int) v.size();
+    this->books = new int[books_count];
+    const int* ptr = v.begin();
+    for (unsigned i = 0; i < books_count; i++)
+        books[i] = ptr[i];
 }
 
 MyLibrary::~MyLibrary() {
