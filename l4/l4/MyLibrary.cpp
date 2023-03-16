@@ -1,4 +1,5 @@
 #pragma warning(disable : 4996)
+#pragma warning(disable : 6386)
 #include "MyLibrary.h"
 #include <cstdarg>
 #include <iostream>
@@ -9,8 +10,8 @@
 
 MyLibrary::MyLibrary(const MyLibrary& other) : output_stream(other.output_stream) {
     this->books_count = other.books_count;
-    this->books = new int[this->books_count];
-    for (int i = 0; i < this->books_count; i++) {
+    this->books = new int[books_count];
+    for (unsigned i = 0; i < this->books_count; i++) {
         this->books[i] = other.books[i];
     }
 }
@@ -37,18 +38,22 @@ MyLibrary::MyLibrary(std::ostream& output_stream, unsigned books_count, int min,
 }
 
 MyLibrary::MyLibrary(std::ostream& output_stream, const char* books_values) : output_stream(output_stream) {
-    this->books_count = 0;
-    this->books = new int[0];
-    char* copy = new char[strlen(books_values)];
-    char* pointerToChar;
-    strcpy(copy, books_values);
-    pointerToChar = strtok(copy, ";");
-    while (pointerToChar != nullptr) {
-        books[books_count] = std::atoi(pointerToChar);
-        books_count++;
-        pointerToChar = strtok(nullptr, ";");
+    this->books_count = 1;
+    char* clone = new char[strlen(books_values) + 1];
+    for (unsigned i = 0; i < strlen(books_values); i++)
+        if (books_values[i] == ';')
+            this->books_count++;
+    this->books = new int[books_count];
+    clone = strcpy(clone, books_values);
+    char* current_id = new char;
+    current_id = strtok(clone, ";");
+    unsigned i = 0;
+    while (current_id) {
+        this->books[i++] = (int) std::atoi(current_id);
+        current_id = strtok(nullptr, ";");
     }
-    
+    delete[] clone;
+    delete current_id;
 }
 
 MyLibrary::MyLibrary(std::ostream& output_stream, unsigned books_count, ...) : output_stream(output_stream){
