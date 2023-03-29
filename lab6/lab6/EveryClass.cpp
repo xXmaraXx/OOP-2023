@@ -81,7 +81,7 @@ ObjectValue::~ObjectValue() {
 }
 
 ObjectValue::operator unsigned() {
-    return count-1;
+    return count;
 }
 
 void ObjectValue::print(std::ostream& out, int indentation = 0) const {
