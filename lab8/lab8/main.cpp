@@ -28,7 +28,7 @@ int main() {
 	}
 	else {
 		std::cerr << "Failed to open input file." << std::endl;
-        return 0;
+        return 1;
 	}
 
 	std::map<std::string, int> wordCount;
@@ -67,6 +67,6 @@ int main() {
 		pq.pop();
 	}
 
-	
+	inputFile.close();
 	return 0;
 }
