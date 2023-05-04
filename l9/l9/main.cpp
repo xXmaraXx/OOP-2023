@@ -130,8 +130,8 @@ int main() {
     });
 
     std::cout << "The 10 most appreciated episodes:" << std::endl;
-    for (int i = 1; i <= 10 && i < episodes.size(); i++) {
-        std::cout << i << ". " << episodes[i].get_score() << " -> " << episodes[i].get_title() << "\n";
+    for (int i = 0; i < 10 && i < episodes.size(); i++) {
+        std::cout << i+1 << ". " << episodes[i].get_score() << " -> " << episodes[i].get_title() << "\n";
     }
     std::cout << "\n";
 
@@ -143,8 +143,8 @@ int main() {
     });
 
     std::cout << "The 10 longest episodes:" << std::endl;
-    for (int i = 1; i <= 10 && i < episodes.size(); i++) {
-        std::cout << i << ". " << episodes[i].get_length() << " -> " << episodes[i].get_title() << "\n";
+    for (int i = 0; i < 10 && i < episodes.size(); i++) {
+        std::cout << i+1 << ". " << episodes[i].get_length() << " -> " << episodes[i].get_title() << "\n";
     }
     std::cout << "\n";
 
