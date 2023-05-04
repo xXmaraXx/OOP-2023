@@ -10,7 +10,6 @@
 /// <summary>
 /// imi scapa 2 filme si 1966 are mai multe episoade la mine decat 1965 nu inteleg de ce
 /// </summary>
-class CsvIterator;
 
 class CsvIterator {
     std::ifstream& file;
